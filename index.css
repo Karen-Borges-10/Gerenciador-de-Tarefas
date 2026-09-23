@@ -7,28 +7,57 @@
 header{
     padding: 10px;
     background-color: blueviolet;
-    h1{
+    h1 {
         text-align: center;
     }
+}
+body {
+    background-color: rgb(202, 200, 200);
 }
 
 #card {
     display: flex;
     flex-direction: column;
-    margin: 20px;
-    background-color: blue;
-    width: 50%;
-
-        #informacao {
-            display: grid;
-            grid-template-columns: 120px 130px;
-            padding: 15px;
-            margin:10px;
-            
-            #prioridade{
-                grid-row: 3/6;
-                
-            }
+    margin: 40px;
+    background-color: white;
+    width: 30%;
+    border-radius: 15px;
+    border-color: rgb(35, 35, 250);
+    border-style: solid;
+        h3{
+            text-align: center;
+            margin: 10px;
         }
+    #informacao {
+        display: grid;
+        grid-template-columns: 120px 130px;
+       column-gap: 10px;
+        row-gap: 30px;
+        margin:10px;
+        padding: 10px;
+        font-size: 20px;
+            
+        #prioridade{
+            grid-row: 3/6;
+
+        }
+        #adicionar{
+            align-self: center;
+            margin: 15px;
+            width: 100%;
+           grid-column: 1/3;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgb(35, 35, 250);
+            color: white;
+        }
+        #descricao,
+        #categoria,
+        #conclusao {
+            width: 180px;
+            height: 35px;
+            font-size: 16px;
+        }
+    }
 }
 
