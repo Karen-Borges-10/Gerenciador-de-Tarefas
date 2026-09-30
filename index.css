@@ -4,60 +4,118 @@
     box-sizing: border-box;
 
 }
-header{
+body{
+    display: grid;
+    grid-template-areas: "header header"
+                          "menu main";
+    grid-template-columns: 20% 80%;
+}
+header {
+    grid-area: header;
     padding: 10px;
-    background-color: blueviolet;
-    h1 {
-        text-align: center;
+    background-color: rgb(105, 22, 182);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
     }
 }
-body {
-    background-color: rgb(202, 200, 200);
+nav{
+    grid-area: menu;
 }
+main{
+    grid-area: main;
+    padding: 30px;
 
-#card {
-    display: flex;
-    flex-direction: column;
-    margin: 40px;
-    background-color: white;
-    width: 30%;
-    border-radius: 15px;
-    border-color: rgb(35, 35, 250);
-    border-style: solid;
-        h3{
-            text-align: center;
-            margin: 10px;
+    #card{
+        background-color: #f0f0f0;
+        padding: 20px;
+        
+        h2{
+            margin: 5px;
+            font-size: 28px;
         }
-    #informacao {
-        display: grid;
-        grid-template-columns: 120px 130px;
-       column-gap: 10px;
-        row-gap: 30px;
-        margin:10px;
-        padding: 10px;
-        font-size: 20px;
-            
-        #prioridade{
-            grid-row: 3/6;
-
-        }
-        #adicionar{
-            align-self: center;
-            margin: 15px;
-            width: 100%;
-           grid-column: 1/3;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: rgb(35, 35, 250);
-            color: white;
-        }
-        #descricao,
-        #categoria,
-        #conclusao {
-            width: 180px;
-            height: 35px;
+        p {
+            margin: 5px;
             font-size: 16px;
         }
+
+        #informacao{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+         #campos-prioridade{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        #opcoes-prioridade{
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+        }
+
+        #informacao > label,
+        #campos-prioridade > label {
+            font-size: 16px;
+        }
+
+        #descricao{
+            grid-column: 1;
+            grid-row: 2;
+            font-size: 16px;
+            height: 30px;
+        }
+        label[for="descricao"]{
+            grid-column: 1;
+            grid-row: 1;
+        }
+        #categoria {
+            grid-column: 2;
+            grid-row: 2;
+            font-size: 16px;
+            height: 30px;
+        }
+
+        label[for="categoria"] {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        #campos-prioridade {
+            grid-column: 1;
+            grid-row: 3;
+        }
+
+        label[for="conclusao"] {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        #conclusao {
+            grid-column: 2;
+            grid-row: 4;
+            font-size: 16px;
+            height: 30px;
+        }
+
+        #adicionar {
+            grid-column: 1 / 3;
+            grid-row: 5;
+            background-color: rgb(105, 22, 182);
+            color: white;
+            border-radius: 15px;
+            height: 40px;
+            font-size: 16px;
+            
+        }
+
     }
 }
-

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,41 +10,53 @@
 <body>
     <header>
         <h1>Gerenciador de Tarefas</h1>
+        <a href="formulario.html" id="perfil"><img src="foto_perfil.jpg" alt="Perfil"></a>
     </header>
+    <nav id="menu">
+        <!-- O JavaScript vai colocar o conteudo do menu aqui -->
+    </nav>
     <main>
         <div id="card">
 
-            <h3>Cadastro de Tarefas</h3>
+            <h2>Adicionar Nova Tarefa</h2>
+            <p>Preencha os dados abaixo para criar uma nova tarefa.</p>
 
             <form id="informacao">
 
-                <label for="Descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" placeholder="Digite a descrição da tarefa...">
 
-                <label for="categoria">Categoria:</label>
+                <label for="categoria">Categoria</label>
                 <select id="categoria" name="categoria">
+                    <option value="" disabled selected>Selecione uma categoria</option>
                     <option value="estudo">Estudo</option>
                     <option value="trabalho">Trabalho</option>
                     <option value="pessoal">Pessoal</option>  
                 </select>
                 
-                <label id="prioridade" for="prioridade">prioridade:</label>
-
+                <div id="campos-prioridade">
+                    <label id="prioridade">Prioridade</label>
                     
-                    <label  for="alta"><input type="radio" id="alta" name="prioridade">Alta</label>
+                    <div id="opcoes-prioridade">
+                        <label  for="alta"><input type="radio" id="alta" name="prioridade">Alta</label>
 
-                    
-                    <label for="media"><input type="radio" id="media" name="prioridade">Média</label>
+                        
+                        <label for="media"><input type="radio" id="media" name="prioridade">Média</label>
 
-                    
-                    <label for="baixa"><input type="radio" id="baixa" name="prioridade">Baixa</label>
+                        
+                        <label for="baixa"><input type="radio" id="baixa" name="prioridade">Baixa</label>
 
-                <label for="conclusao">Data de conclusão:</label>
-                <input type="date" id="conclusao" name="conclusao">
+                    </div>
+                </div>
+                    <label for="conclusao">Data de conclusão</label>
+                    <input type="date" id="conclusao" name="conclusao">
 
-                <button id="adicionar">Adicionar Tarefa</button>
+                <button id="adicionar">+ Adicionar Tarefa</button>
             </form>
         </div>
+        <section id="lista-tarefas">
+            <!-- O JavaScript vai colocar as tarefas aqui -->
+        </section>
     </main>
 </body>
 </html>
