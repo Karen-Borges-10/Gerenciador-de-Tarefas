@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    display: grid;
+    grid-template-areas: "header"
+                          "voltar"
+                          "main";
+    grid-template-rows: auto auto 1fr;
+    min-height: 100vh;
+}
+header {
+    grid-area: header;
+    padding: 10px;
+    background-color: rgb(105, 22, 182);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+#voltar{
+    grid-area: voltar;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 20px;
+    width: 15%;
+
+    a{
+        text-decoration: none;
+        color: rgb(105, 22, 182);
+        font-size: 16px;
+    }
+}
+main{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #dce1f0;
+    border-radius: 15px;
+    padding: 30px;
+    column-gap: 30px;
+    row-gap: 8px;
+
+    #cadastro{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        #card {
+            grid-column: 1 / 3;
+            margin-bottom: 20px;
+        }
+        #card i{
+            color: rgb(105, 22, 182);
+            font-size: 35px;
+        }
+        #card h1 {
+            font-size: 28px;
+            margin-top: 10px;
+        }
+        #card p {
+            font-size: 16px;
+            margin-top: 8px;
+        }
+        #cadastro > label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .campo {
+            display: flex;
+            align-items: center;
+            border: 1px solid #cfd6e6;
+            border-radius: 8px;
+            height: 42px;
+            padding: 0 10px;
+        }
+        .campo i {
+            color: gray;
+            margin-right: 10px;
+        }
+        .campo input {
+            border: none;
+            outline: none;
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+        }
+
+        #criar-conta {
+            grid-column: 1 / 3;
+            background-color: rgb(105, 22, 182);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            height: 42px;
+            font-size: 16px;
+        }
+    }
+}

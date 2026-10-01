@@ -34,13 +34,14 @@ main{
     #card{
         background-color: #f0f0f0;
         padding: 20px;
+        border-radius: 10px;
         
         h2{
             margin: 5px;
             font-size: 28px;
         }
         p {
-            margin: 5px;
+            margin-bottom: 10px;
             font-size: 16px;
         }
 
@@ -51,20 +52,36 @@ main{
             width: 100%;
         }
 
-         #campos-prioridade{
-            display: flex;
-            flex-direction: column;
-            
-        }
         #opcoes-prioridade{
             display: flex;
             gap: 20px;
             font-size: 16px;
         }
+        #opcoes-prioridade label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bolinha{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .bolinha.alta{
+            background-color: red;
+        }
+        .bolinha.media{
+            background-color: orange;
+        }
+        .bolinha.baixa{
+            background-color: green;
+        }
 
         #informacao > label,
         #campos-prioridade > label {
             font-size: 16px;
+            font-weight: bold;
         }
 
         #descricao{
