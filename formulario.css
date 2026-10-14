@@ -11,6 +11,7 @@ body{
                           "main";
     grid-template-rows: auto auto 1fr;
     min-height: 100vh;
+    background-color: #f4f6ff;
 }
 header {
     grid-area: header;
@@ -30,10 +31,10 @@ header {
 #voltar{
     grid-area: voltar;
     background-color: #f0f0f0;
-    padding: 10px;
-    margin: 20px;
+    padding: 12px 18px;
+    margin: 20px 48px;
     border-radius: 20px;
-    width: 15%;
+    width: fit-content;
 
     a{
         text-decoration: none;
@@ -43,39 +44,52 @@ header {
 }
 main{
     grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: transparent;
     border: 1px solid #dce1f0;
-    border-radius: 15px;
-    padding: 30px;
-    column-gap: 30px;
-    row-gap: 8px;
+    padding: 0 48px 40px;
 
     #cadastro{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 25px;
+        width: 100%;
+        padding: 25px 20px;
+        background-color: white;
+        border: 1px solid #dce1f0;
+        border-radius: 15px;
 
         #card {
-            grid-column: 1 / 3;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            grid-column: 1 / -1;
+            margin-bottom: 5px;
         }
         #card i{
             color: rgb(105, 22, 182);
-            font-size: 35px;
+            font-size: 30px;
         }
         #card h1 {
             font-size: 28px;
-            margin-top: 10px;
+            margin-top: 0;
         }
         #card p {
             font-size: 16px;
             margin-top: 8px;
         }
-        #cadastro > label {
+        .grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 0;
+        }
+        .grupo label {
             font-size: 16px;
             font-weight: bold;
+            color: #101b3d;
         }
 
         .campo {
@@ -85,27 +99,34 @@ main{
             border-radius: 8px;
             height: 42px;
             padding: 0 10px;
+            min-width: 0;
         }
         .campo i {
             color: gray;
+            font-size: 16px;
             margin-right: 10px;
         }
         .campo input {
             border: none;
             outline: none;
             width: 100%;
+            min-width: 0;
             height: 100%;
             font-size: 16px;
         }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
 
         #criar-conta {
-            grid-column: 1 / 3;
+            grid-column: 1 / -1;
             background-color: rgb(105, 22, 182);
             color: white;
             border: none;
-            border-radius: 8px;
-            height: 42px;
+            border-radius: 15px;
+            height: 40px;
             font-size: 16px;
+            cursor: pointer;
         }
     }
 }
