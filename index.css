@@ -131,8 +131,61 @@ main{
             border-radius: 15px;
             height: 40px;
             font-size: 16px;
+            cursor: pointer;
             
         }
 
     }
+}
+.bloco {
+    background-color: white;
+    border: 1px solid #e5eaf5;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+.tarefa {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.informacoes-tarefa{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+.informacoes-tarefa p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 0;
+}
+.concluir-tarefa {
+        appearance: none;
+        width: 26px;
+        height: 26px;
+        border: 2px solid #bdc9e2;
+        border-radius: 8px;
+        background-color: white;
+        cursor: pointer;
+        flex-shrink: 0;
+}
+.tarefa.concluida .informacoes-tarefa p:first-child,
+.tarefa.concluida .informacoes-tarefa p:last-child {
+    text-decoration: line-through;
+    color: #8290ad;
+}
+.concluir-tarefa:checked {
+        background-color: #6547f5;
+        border-color: #6547f5;
+}
+.concluir-tarefa:checked::after {
+        content: "✓";
+        display: block;
+        color: white;
+        text-align: center;
+        line-height: 22px;
+        font-size: 18px;
 }
