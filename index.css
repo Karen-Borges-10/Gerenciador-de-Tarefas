@@ -8,7 +8,7 @@ body{
     display: grid;
     grid-template-areas: "header header"
                           "menu main";
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 1fr;
 }
 header {
     grid-area: header;
@@ -26,7 +26,53 @@ header {
 }
 nav{
     grid-area: menu;
+    padding: 20px 12px;
+    background-color: #faf8fd;
+    min-height: 100%;
 }
+nav h3 {
+    font-size: 16px;
+    color: #4b3b60;
+    margin: 15px 8px 10px;
+    text-transform: uppercase;
+}
+nav button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 11px 12px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #453b52;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+}
+nav button:hover {
+    background-color: #f0e9fa;
+}
+nav button.ativo {
+    background-color: #e9ddf8;
+    color: #54218a;
+    font-weight: bold;
+}
+nav .contador {
+    min-width: 25px;
+    padding: 3px 7px;
+    border-radius: 12px;
+    background-color: #eee8f4;
+    color: #62556f;
+    font-size: 12px;
+    text-align: center;
+}
+nav button.ativo .contador {
+    background-color: #d8c4ef;
+    color: #54218a;
+}
+
 main{
     grid-area: main;
     padding: 30px;
@@ -140,19 +186,23 @@ main{
 .bloco {
     background-color: white;
     border: 1px solid #e5eaf5;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
+    border-radius: 13px;
+    padding: 16px 22px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 7px rgba(49, 67, 120, 0.03);
+
 }
 .tarefa {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
 }
 .informacoes-tarefa{
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 20px;
     flex: 1;
     min-width: 0;
 }
@@ -161,6 +211,62 @@ main{
         align-items: center;
         gap: 5px;
         margin: 0;
+        font-size: 14px;
+        color: #344568;
+}
+.informacoes-tarefa p:first-child {
+    width: 100%;
+    font-weight: bold;
+    color: #17264b;
+}
+.bolinha-categoria {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.texto-categoria.estudo {
+    color: #025588;
+}
+
+.texto-categoria.pessoal {
+    color: blueviolet;
+}
+
+.texto-categoria.trabalho {
+    color: green;
+}
+.bolinha-categoria.pessoal {
+    background-color: blueviolet;
+}
+
+.bolinha-categoria.estudo {
+    background-color: #025588;
+}
+
+.bolinha-categoria.trabalho {
+    background-color: green;
+}
+.icone-prioridade {
+    font-size: 14px;
+}
+
+.icone-prioridade.alta, .informacoes-tarefa p:has(.icone-prioridade.alta) {
+    color: red;
+}
+
+.icone-prioridade.media, .informacoes-tarefa p:has(.icone-prioridade.media) {
+    color: orange;
+}
+
+.icone-prioridade.baixa, .informacoes-tarefa p:has(.icone-prioridade.baixa) {
+    color: green;
+}
+.informacoes-tarefa svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
 }
 .concluir-tarefa {
         appearance: none;
@@ -188,4 +294,37 @@ main{
         text-align: center;
         line-height: 22px;
         font-size: 18px;
+}
+.editar-tarefa,
+.excluir-tarefa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 7px;
+    background-color: transparent;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.editar-tarefa {
+    color: #9B91B5;
+    margin-left: auto;
+}
+
+.excluir-tarefa {
+    color: #9B91B5;
+}
+
+.editar-tarefa:hover {
+    background-color: #eeebff;
+    color: #6044d9;
+}
+
+.excluir-tarefa:hover {
+    background-color: #fff0f0;
+    color: #e34848;
 }
