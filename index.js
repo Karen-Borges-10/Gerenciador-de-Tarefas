@@ -53,6 +53,11 @@ function criarTarefa(descricao, categoria, prioridade, data) {
     checkbox.classList.add("concluir-tarefa");
     const tarefa = document.createElement("div");
     tarefa.classList.add("tarefa");
+    tarefa.dataset.descricao = descricao;
+    tarefa.dataset.categoria = categoria;
+    tarefa.dataset.prioridade = prioridade;
+    tarefa.dataset.data = data;
+    tarefa.dataset.concluida = "false";
     const botaoExcluir = document.createElement("button");
     botaoExcluir.innerHTML = '<i class="fa-solid fa-trash"></i>';
     botaoExcluir.classList.add("excluir-tarefa");
@@ -87,7 +92,12 @@ function criarTarefa(descricao, categoria, prioridade, data) {
         tarefa.prepend(checkbox);
 
         checkbox.addEventListener("change", function() {
+        if (tarefa.closest(".exemplo")) {
+            checkbox.checked = false;
+            return;
+        }
         tarefa.classList.toggle("concluida", checkbox.checked);
+        salvar_tarefas();
         atualizar_contadores();
         aplicar_filtros();
     });
@@ -96,6 +106,9 @@ function criarTarefa(descricao, categoria, prioridade, data) {
     tarefa.appendChild(botaoExcluir);    
 
     botaoEditar.addEventListener("click", function() {
+    if (tarefa.closest(".exemplo")) {
+        return;
+    }
     const informacoes = tarefa.querySelector(".informacoes-tarefa");
     const paragrafos = informacoes.querySelectorAll("p");
 
@@ -107,6 +120,9 @@ function criarTarefa(descricao, categoria, prioridade, data) {
     document.getElementById("adicionar").textContent = "Salvar Alterações";});
 
     botaoExcluir.addEventListener("click", function() {
+    if (tarefa.closest(".exemplo")) {
+        return;
+    }
         const confirmar = confirm("Tem certeza de que deseja excluir esta tarefa?");
         if(!confirmar) {
             return;
@@ -129,6 +145,7 @@ function criarTarefa(descricao, categoria, prioridade, data) {
         }
         atualizar_contadores();
         aplicar_filtros();
+        salvar_tarefas();
     });
     return tarefa;
 }
@@ -137,6 +154,23 @@ const tarefas = [];
 let tarefas_editando = null;
 let situacao_selecionada = "todas";
 let categoria_selecionada = "todas";
+
+function salvar_tarefas() {
+    const dados_tarefas = tarefas.map(function(bloco) {
+        const tarefa = bloco.querySelector(".tarefa");
+        const checkbox = tarefa.querySelector(".concluir-tarefa");
+
+        return {
+            descricao: tarefa.dataset.descricao,
+            categoria: tarefa.dataset.categoria,
+            prioridade: tarefa.dataset.prioridade,
+            data: tarefa.dataset.data,
+            concluida: checkbox.checked
+        };
+    });
+
+    localStorage.setItem("tarefas", JSON.stringify(dados_tarefas));
+}
 
 function aplicar_filtros(){
     tarefas.forEach(function(bloco){
@@ -276,6 +310,9 @@ function adicionarTarefa() {
         tarefas_editando = null;
         document.getElementById("adicionar").textContent = "+ Adicionar Tarefa";
     } else {
+        listas.querySelectorAll(".exemplo").forEach(function(exemplo) {
+            exemplo.remove();
+        });
         const tarefa = criarTarefa(descricao, categoria, prioridade, data);
         const bloco = document.createElement("div");
         bloco.classList.add("bloco");
@@ -287,13 +324,81 @@ function adicionarTarefa() {
         document.getElementById("informacao").reset();
         atualizar_contadores();
         aplicar_filtros();
+        salvar_tarefas();
 }
-atualizar_contadores();
 
-/*
-const tarefasSalvas = localStorage.getItem("tarefas");
+function mostrar_exemplo(){
+     const exemplos = [
+        {
+            descricao: "Estudar JavaScript",
+            categoria: "estudo",
+            prioridade: "alta",
+            data: "2026-10-25"
+        },
+        {
+            descricao: "Organizar tarefas da semana",
+            categoria: "pessoal",
+            prioridade: "media",
+            data: "2026-10-28"
+        }
+    ];
 
-if (tarefasSalvas === null || JSON.parse(tarefasSalvas).length === 0) {
-    mostrarExemplos();
+    exemplos.forEach(function(dados) {
+        const tarefa = criarTarefa(
+            dados.descricao,
+            dados.categoria,
+            dados.prioridade,
+            dados.data
+        );
+
+        const bloco = document.createElement("div");
+        bloco.classList.add("bloco", "exemplo");
+        bloco.appendChild(tarefa);
+
+        listas.appendChild(bloco);
+    });
 }
-    */
+
+function carregarTarefas() {
+    const tarefasSalvas = localStorage.getItem("tarefas");
+
+    if (tarefasSalvas === null) {
+        mostrar_exemplo();
+        atualizar_contadores();
+        return;
+    }
+
+    const dadosTarefas = JSON.parse(tarefasSalvas);
+
+    if (dadosTarefas.length === 0) {
+        mostrar_exemplo();
+        atualizar_contadores();
+        return;
+    }
+
+    dadosTarefas.forEach(function(dados) {
+        const tarefa = criarTarefa(
+            dados.descricao,
+            dados.categoria,
+            dados.prioridade,
+            dados.data
+        );
+
+        const checkbox = tarefa.querySelector(".concluir-tarefa");
+
+        checkbox.checked = dados.concluida;
+        tarefa.classList.toggle("concluida", dados.concluida);
+        tarefa.dataset.concluida = String(dados.concluida);
+
+        const bloco = document.createElement("div");
+        bloco.classList.add("bloco");
+        bloco.appendChild(tarefa);
+
+        tarefas.push(bloco);
+        listas.appendChild(bloco);
+    });
+
+    atualizar_contadores();
+    aplicar_filtros();
+}
+carregarTarefas();
