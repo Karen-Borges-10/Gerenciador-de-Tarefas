@@ -9,6 +9,7 @@ body{
     grid-template-areas: "header header"
                           "menu main";
     grid-template-columns: 20% 1fr;
+    font-family: Georgia, serif;
 }
 header {
     grid-area: header;
@@ -49,6 +50,7 @@ nav button {
     color: #453b52;
     font-size: 15px;
     text-align: left;
+    font-family: inherit;
     cursor: pointer;
 }
 nav button:hover {
@@ -191,6 +193,10 @@ main{
     margin-bottom: 10px;
     box-shadow: 0 2px 7px rgba(49, 67, 120, 0.03);
 
+}
+#lista-tarefas h2 {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .tarefa {
     display: flex;

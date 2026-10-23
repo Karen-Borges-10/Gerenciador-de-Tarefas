@@ -12,6 +12,7 @@ body{
     grid-template-rows: auto auto 1fr;
     min-height: 100vh;
     background-color: #f4f6ff;
+    font-family: Georgia, serif;
 }
 header {
     grid-area: header;
