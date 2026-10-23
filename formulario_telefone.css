@@ -1,0 +1,184 @@
+/* ADAPTAÇÃO PARA TELAS DE TELEFONE */
+@media screen and (max-width: 600px) {
+
+    body {
+        grid-template-areas:
+            "header"
+            "voltar"
+            "main";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    header {
+        grid-area: header;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    header h1 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    #perfil img {
+        width: 35px;
+        height: 35px;
+        flex-shrink: 0;
+    }
+
+    /* Link para voltar */
+    #voltar {
+        grid-area: voltar;
+        width: fit-content;
+        max-width: calc(100% - 24px);
+        margin: 12px;
+        padding: 10px 12px;
+        box-sizing: border-box;
+    }
+
+    #voltar a {
+        font-size: 13px;
+    }
+
+    main {
+        grid-area: main;
+        display: block;
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    main #cadastro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-auto-flow: row;
+        gap: 16px;
+        width: 100%;
+        min-width: 0;
+        padding: 18px 14px;
+        box-sizing: border-box;
+        background-color: white;
+        border: 1px solid #dce1f0;
+        border-radius: 12px;
+    }
+
+    /* Título e descrição */
+    main #cadastro #card {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+        margin-bottom: 4px;
+    }
+
+    #card > i {
+        flex-shrink: 0;
+        color: rgb(105, 22, 182);
+        font-size: 23px;
+        margin-top: 4px;
+    }
+
+    #card > div {
+        flex: 1;
+        min-width: 0;
+    }
+
+    #card h1 {
+        font-size: 22px;
+        line-height: 1.3;
+        margin: 0;
+    }
+
+    #card p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 6px;
+    }
+
+    /* Grupos dos campos: uma coluna */
+    main #cadastro .grupo {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    #cadastro .grupo label {
+        font-size: 15px;
+        font-weight: bold;
+        color: #101b3d;
+    }
+
+    /* Caixa que contém o ícone e o campo */
+    main #cadastro .campo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        background-color: white;
+        border: 1px solid #cfd6e6;
+        border-radius: 8px;
+    }
+
+    #cadastro .campo i {
+        flex-shrink: 0;
+        margin-right: 0;
+        color: gray;
+        font-size: 14px;
+    }
+
+    main #cadastro .campo input {
+        flex: 1;
+        width: 0;
+        min-width: 0;
+        height: 100%;
+        padding: 0;
+        border: none;
+        outline: none;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #222;
+        background-color: transparent;
+    }
+
+    #cadastro .campo input::placeholder {
+        color: #666;
+        opacity: 1;
+        font-size: 14px;
+    }
+
+    #cadastro .campo input[type="date"] {
+        font-size: 14px;
+    }
+
+    main #cadastro #criar-conta {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+        padding: 10px;
+        background-color: rgb(105, 22, 182);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+}

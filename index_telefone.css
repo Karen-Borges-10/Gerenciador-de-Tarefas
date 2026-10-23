@@ -1,0 +1,224 @@
+/* ADAPTAÇÃO PARA TELAS DE TELEFONE */
+@media screen and (max-width: 600px) {
+
+    body {
+        grid-template-areas:
+            "header"
+            "menu"
+            "main";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    header {
+        grid-area: header;
+        width: 100%;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    header h1 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    #perfil img {
+        width: 35px;
+        height: 35px;
+        flex-shrink: 0;
+    }
+
+    #menu {
+        grid-area: menu;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    #menu h3 {
+        margin: 8px 0 2px;
+        font-size: 15px;
+    }
+
+    #menu button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-width: 0;
+        padding: 10px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    main {
+        grid-area: main;
+        display: block;
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    #card {
+        width: 100%;
+        min-width: 0;
+        padding: 16px;
+        box-sizing: border-box;
+    }
+
+    #card h2 {
+        margin: 5px 0 8px;
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    #card p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    body main #card #informacao {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    body main #card #informacao > label {
+        width: 100%;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    body main #card #informacao > input,
+    body main #card #informacao > select {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 44px;
+        height: 44px;
+        padding: 10px;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #222;
+        background-color: white;
+        border: 1px solid #888;
+        border-radius: 6px;
+    }
+
+    #informacao input::placeholder {
+        color: #666;
+        opacity: 1;
+        font-size: 14px;
+    }
+
+    body main #card #informacao > #opcoes-prioridade {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    #opcoes-prioridade label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+    }
+
+    /* Botão adicionar, no final */
+    body main #card #informacao > #adicionar {
+        order: 10;
+        width: 100% !important;
+        min-width: 0;
+        min-height: 44px;
+        height: auto;
+        padding: 12px;
+        margin-top: 5px;
+        box-sizing: border-box;
+        background-color: rgb(105, 22, 182);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #lista-tarefas {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        min-width: 0;
+        margin-top: 16px;
+    }
+
+    #lista-tarefas .bloco {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #lista-tarefas .tarefa {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    #lista-tarefas .concluir-tarefa {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+    }
+
+    #lista-tarefas .informacoes-tarefa {
+        flex: 1 1 150px;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    #lista-tarefas .informacoes-tarefa p {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    #lista-tarefas .informacoes-tarefa p:first-child {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    #lista-tarefas .informacoes-tarefa svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+
+    #lista-tarefas .editar-tarefa,
+    #lista-tarefas .excluir-tarefa {
+        flex-shrink: 0;
+        padding: 7px;
+        font-size: 15px;
+    }
+}
